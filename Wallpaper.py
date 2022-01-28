@@ -4,20 +4,20 @@ from tkinter import *
 root = Tk()
 
 
-CanvasSize= 1000
+CanvasSize= 200
 
 canvas = Canvas(root,height=CanvasSize,width=CanvasSize)
 canvas.pack()
 
-def CreateCircle(x,y,r,canvasName):
+def CreateCircle(x,y,r,canvasName,ColorCode):
     x0 = x - r
     y0 = y - r
     x1 = x + r
     y1 = y + r
-    return canvasName.create_oval(x0,y0,x1,y1)
+    return canvasName.create_oval(x0,y0,x1,y1,outline=ColorCode)
 
-def PlotPixel(x, y, canvas):
-    return CreateCircle(x,y,1,canvas)
+def PlotPixel(x, y, canvas,ColorCode):
+    return CreateCircle(x,y,1,canvas,ColorCode)
 
 def CreateWallpaper():
     corna = 5
@@ -30,7 +30,16 @@ def CreateWallpaper():
             y = cornb + j * side / 100
             c = math.floor(x * x + y * y)
             if(c % 10 == 0):
-                PlotPixel(i,j,canvas)
+                PlotPixel(i,j,canvas, "#f00")
+            elif(c % 5 == 0):
+                PlotPixel(i,j,canvas, "#0f0")
+            elif(c % 3 == 0):
+                PlotPixel(i,j,canvas, "#00f")
+            else:
+                PlotPixel(i,j,canvas, "#fff")
+
+
+
 
 
 CreateWallpaper()
