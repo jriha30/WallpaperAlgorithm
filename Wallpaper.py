@@ -4,7 +4,7 @@ from tkinter import *
 root = Tk()
 
 
-CanvasSize= 500
+CanvasSize= 1000
 
 canvas = Canvas(root,height=CanvasSize,width=CanvasSize)
 canvas.pack()
